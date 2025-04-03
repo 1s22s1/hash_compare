@@ -1,8 +1,4 @@
 # frozen_string_literal: true
 
-require_relative "hash_compare/version"
-
-module HashCompare
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative 'hash_compare/compare'
+require_relative 'hash_compare/version'
