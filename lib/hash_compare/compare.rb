@@ -3,9 +3,10 @@
 # Best diff two objects.
 module HashCompare
   def compare(comp_a, comp_b)
-    target_keys = comp_a.keys - comp_b.keys
+    lack_key = (comp_a.keys - comp_b.keys).map { |key| ['-', key.to_s, comp_a.fetch(key)] }
+    surplus_key = (comp_b.keys - comp_a.keys).map { |key| ['+', key.to_s, comp_b.fetch(key)] }
 
-    target_keys.map { |key| ['-', key, comp_a.fetch(key)] }
+    lack_key + surplus_key
   end
 
   module_function :compare
