@@ -4,6 +4,13 @@ RSpec.describe HashCompare do
   describe '.compare' do
     subject { described_class.compare(a, b) }
 
+    context '比較対象の両方ともnilだった場合' do
+      let(:a) { nil }
+      let(:b) { nil }
+
+      it { is_expected.to eq [] }
+    end
+
     context 'キーが不足している場合' do
       let(:a) { { a: 3, b: 2 } }
       let(:b) { {} }
