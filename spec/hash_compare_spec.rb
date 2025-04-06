@@ -38,5 +38,19 @@ RSpec.describe HashCompare do
 
       it { is_expected.to eq [['+', 'a', 1], ['+', 'b', 2]] }
     end
+
+    context 'キーが不足しているかつ充足している場合' do
+      let(:a) { { a: 1 } }
+      let(:b) { { b: 2 } }
+
+      it { is_expected.to eq [['-', 'a', 1], ['+', 'b', 2]] }
+    end
+
+    context 'キーが一致しているかつバリューが異なる場合' do
+      let(:a) { { a: 1 } }
+      let(:b) { { a: 2 } }
+
+      it { is_expected.to eq [['~', 'a', 1, 2]] }
+    end
   end
 end
